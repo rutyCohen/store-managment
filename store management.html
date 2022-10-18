@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- <script src="./Store management.js"></script> -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./store management.css" rel="stylesheet">
+    <script src="./product.js" ></script>
+    <script src="./store management.js" ></script>
+    <title>Document</title>
+</head>
+<body onload="onLoad()">
+<div>
+    <div class="title">
+        <h1 class="h1Title">Store management</h1>
+        <input type="button" value="Add new product" class="buttonTitle" onclick="myShop.add()">
+        <input type="button" value="search product" class="buttonTitle" onclick="myShop.search()" style="margin-left: 120px;">
+
+    </div>
+
+        <template id="temp-card">
+            <div class="card">
+                <h1 class="name"></h1>
+                <p class="id"></p>
+                <p class="price"></p>
+                <p class="unitsInStock"></p>
+                <p><button class="deleteProduct">delete product</button></p>
+                <p><button class="editProduct">edit product</button></p>
+            </div>
+        </template>
+
+    <section class="container">
+        
+        <div class="addProd" style="display:none;" id="addProd">
+            <h2>Add new product</h2>  
+            <label for="pid">product id</label>
+            <input id="pid" name="pid" type="number">
+            <label for="pname">product name</label>
+            <input id="pname" name="pname" type="text">
+            <label for="pcategory">product category name</label>
+            <input id="pcategory" name="pcategory" type="text">
+            <label for="pprice">product price</label>
+            <input id="pprice" name="pprice" type="number">
+            <label for="punitsInStock">units in stock</label>
+            <input id="punitsInStock" name="punitsInStock" type="number">
+            <button onclick="myShop.addProduct()">add new product</button>
+            </div>
+
+            <div class="edit" id="edit" style="display:none;">
+                <h2>Edit product</h2>
+                <label for="prodId" class="prodId">product id</label>
+                <input id="prodId" name="prodId" type="number">
+                <label for="prodName" class="prodName">product name</label>
+                <input id="prodName"  name="prodName" type="text">
+                <label for="prodCategory" class="prodCategory">product category name</label>
+                <input id="prodCategory"  name="prodCategory" type="text">
+                <label for="prodPrice" class="prodPrice">product price</label>
+                <input id="prodPrice" name="prodPrice" type="number">
+                <label for="prodUnitsInStock" class="prodUnitsInStock">units in stock</label>
+                <input id="prodUnitsInStock" name="prodUnitsInStock" type="number">
+                <input type="button" value="edit product" onclick="myShop.edit()">
+        </div>
+
+        <div class="search" style="display:none;" id="search">
+            <h2>  Search for product by</h2>          
+            <select id="selectBox">
+                <option value="productId">product id</option>
+                <option value="productName">product name</option>
+                <option value="outOfStock">out of stock products</option>
+                <option value="closeOutOfStock">close to out of stock products</option>
+            </select>
+            <input id="parameter" name="parameter">
+            <input type="button" value="search" onclick="myShop.serchBy()">
+
+            <h2>  Search for product by category</h2>          
+            <select id="selectBoxCatgory">
+                <option value="living room">living room</option>
+                <option value="kitchen">kitchen</option>
+                <option value="bed room">bed room</option>
+            </select>
+            <input type="button"  value="search" onclick="myShop.serchByCategory()">
+
+            <h2>  Search between price range:</h2>
+            <label for="min">min</label>          
+            <input id="min" name="min" type="number">
+            <label for="max">max</label>          
+            <input id="max" name="max" type="number">
+            <input  type="button" value="search" onclick="myShop.serchByRange()">
+            <input  type="button"  value="Show all products" onclick="myShop.get()">
+
+        </div>
+    </section>
+</div>
+
+<PoductList id="PoductList">
+</PoductList>
+<div id="filters" class="Filters fixedVisible">
+
+    </div>
+</div>
+
+</body>
+</html>
